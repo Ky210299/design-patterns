@@ -14,11 +14,11 @@ public class SinglentonClass {
 
   // This field can be the same for all the application
   // so we need ensure that only exist one instance of it
-  private static final SinglentonClass isntance = new SinglentonClass(2, 3, 5);
+  private static final SinglentonClass instance = new SinglentonClass(2, 3, 5);
 
   // Now must bring access to the unic instance of the class
   public static SinglentonClass getInstance(){
-    return isntance;
+    return instance;
   }
 
   // this is a expensive method
