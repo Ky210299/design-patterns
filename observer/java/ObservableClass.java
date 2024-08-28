@@ -1,9 +1,13 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public class ObservableExample implements Observable{
 
+// This can be observed by the observer interface
+public class ObservableClass implements Observable{
+
+  // In this set the observable have all the observers
   Set<IObserver> observerSet = new HashSet<>();
+
   @Override
   public void addObserver(IObserver o) {
     observerSet.add(o);
@@ -14,6 +18,7 @@ public class ObservableExample implements Observable{
     observerSet.remove(o);
   }
 
+  // We notify all observer here
   @Override
   public void notifyObservers() {
     for (IObserver observer : observerSet) {
