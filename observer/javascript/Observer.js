@@ -1,0 +1,6 @@
+function Observer() {
+
+  function update() {
+
+  }
+};
