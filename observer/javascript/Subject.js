@@ -1,18 +1,26 @@
-function Subject() {
-
-  let observerList = [];
-
-  function attachObserver(observer){
-    return this.observerList.push(observer)
+export default class Subject{
+  constructor(){
+    this.observers = new Map();
   }
 
-  function detachObserver(observer){
-    return this.observerList = observerList.filter(obs => observer !== obs);
+  attach(event, obs){
+    if (!this.observers.has(event)){
+      this.observers.set(event, []);
+    }
+    this.observers.get(event).push(obs);
   }
 
-  function notifyObservers(event) {
-    return this.observerList = observerList.forEach(obs => {
-      return obs.update(event);
-    })
+  detach(event, obs) {
+    if(!this.observers.has(event)) return
+
+    this.observers.set(event, this.observers.get(event).filter(observer => observer !== obs))
+  }
+
+  notify(event, data = undefined){
+    if(!this.observers.has(event)) return
+
+    this.observers.get(event).forEach(obs => {
+     obs.update(data);
+    });
   }
 }
